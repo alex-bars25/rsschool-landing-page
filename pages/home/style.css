@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  background: #e1d4c9;
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 1440px;
+}
+
+.logo {
+  width: 100px;
+}
+
+.header-menu {
+  margin: 20px 40px;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navigation {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+  padding: 0;
+}
+
+.navigation a {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+  color: #403f3d;
+  text-decoration: none;
+}
+
+.navigation a:after {
+  display: block;
+  content: "";
+  border-bottom: solid 2px #403f3d;
+  transform: scaleX(0);
+  transition: transform 0.5s;
+  padding-top: 4px;
+}
+
+.navigation a:hover:after {
+  transform: scaleX(1);
+}
+
+.header-actions {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.theme-switch {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  border: solid 1px #c1b6ad;
+  border-radius: 22px;
+  padding: 4px;
+}
+
+.theme-switch:hover .dark {
+  background: #665f55;
+  transition: 0.5s;
+}
+
+.theme-switch:hover .dark svg path {
+  fill: #e1d4c9;
+  transition: 0.5s;
+}
+
+.light {
+  background: #b0907a;
+}
+
+.light,
+.dark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  width: 36px;
+  border-radius: 100%;
+}
+
+.menu a {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+  color: #403f3d;
+  text-decoration: none;
+}
+
+.menu a span {
+  margin-right: 5px;
+}
+
+.menu a:after {
+  display: block;
+  content: "";
+  border-bottom: solid 2px #403f3d;
+  transform: scaleX(0);
+  transition: transform 0.5s;
+  padding-top: 4px;
+}
+
+.menu a:hover:after {
+  transform: scaleX(1);
+}
+
+.hero {
+  max-width: 1360px;
+  padding: 100px;
+  margin: 0 auto;
+  border-radius: 40px;
+  background: no-repeat center/100% url(../../assets/img/img-hero.png);
+}
+
+.hero-offer {
+  display: flex;
+  width: 530px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+h1 {
+  font-family: Inter;
+  font-size: 72px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 105%;
+  color: #e1d4c9;
+  margin: 0;
+}
+
+.accent {
+  color: #b0907a;
+  font-style: italic;
+}
+
+.hero-offer p {
+  color: #e1d4c9;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  margin: 0;
+}
+
+.menu-button {
+  display: flex;
+  width: 200px;
+  padding: 20px 78px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 100px;
+  background: #e1d4c9;
+  color: #403f3d;
+  text-align: center;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+  text-decoration: none;
+}
+
+.menu-button img {
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.menu-button span {
+  transform: translateX(14px);
+  transition: 0.5s;
+}
+
+.menu-button:hover img {
+  opacity: 1;
+}
+
+.menu-button:hover span {
+  transform: translateX(0);
+}
