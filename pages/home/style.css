@@ -2,6 +2,7 @@
 
 html {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -11,6 +12,10 @@ body {
 .wrapper {
   margin: 0 auto;
   max-width: 1440px;
+}
+
+.header {
+  margin-bottom: 100px;
 }
 
 .logo {
@@ -139,7 +144,7 @@ body {
 }
 
 h1 {
-  font-family: Inter;
+  font-family: "Inter", sans-serif;
   font-size: 72px;
   font-style: normal;
   font-weight: 600;
@@ -155,7 +160,7 @@ h1 {
 
 .hero-offer p {
   color: #e1d4c9;
-  font-family: Inter;
+  font-family: "Inter", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -174,7 +179,7 @@ h1 {
   background: #e1d4c9;
   color: #403f3d;
   text-align: center;
-  font-family: Inter;
+  font-family: "Inter", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -198,4 +203,122 @@ h1 {
 
 .menu-button:hover span {
   transform: translateX(0);
+}
+
+.favorite-coffee {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 100px;
+}
+
+h2 {
+  font-family: "Inter", sans-serif;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%;
+  color: #403f3d;
+  margin: 0;
+}
+
+.slider {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.slide {
+  display: flex;
+  width: 1152px;
+  min-width: 480px;
+  max-width: 1162px;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 40px;
+}
+
+.card {
+  display: flex;
+  width: 480px;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.card-image {
+  width: 480px;
+  height: 480px;
+}
+
+.card-description {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: #403f3d;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+}
+
+.coffee-name {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 125%;
+}
+
+.coffee-description {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+.coffee-price {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 125%;
+}
+
+.controls {
+  line-height: 0;
+  display: flex;
+  gap: 12px;
+}
+
+.control {
+  display: inline-block;
+  width: 40px;
+  height: 4px;
+  border-radius: 100px;
+  background: #c1b6ad;
+  content: "";
+}
+
+.active {
+  background: #665f55;
+}
+
+.arrow {
+  display: flex;
+  width: 60px;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 100px;
+  border: 1px solid #665f55;
+  transition: 0.5s;
+}
+
+.arrow.left {
+  transform: scaleX(-1);
+}
+
+.arrow:hover {
+  background: #665f55;
+}
+
+.arrow:hover svg path {
+  stroke: #e1d4c9;
 }

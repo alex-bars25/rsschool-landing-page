@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Coffee House</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="../../assets/icons/coffee-cup.svg"
+    />
     <link rel="stylesheet" href="../reset.css" />
     <link rel="stylesheet" href="./style.css" />
   </head>
@@ -16,7 +21,7 @@
           </div>
           <nav>
             <ul class="navigation">
-              <li><a href="">Favorite coffee</a></li>
+              <li><a href="#favorite-coffee">Favorite coffee</a></li>
               <li><a href="">About</a></li>
               <li><a href="">Mobile app</a></li>
               <li><a href="">Contact us</a></li>
@@ -81,5 +86,69 @@
         </div>
       </div>
     </header>
+    <main>
+      <div class="wrapper">
+        <section id="favorite-coffee" class="favorite-coffee">
+          <h2>Choose your <span class="accent">favorite</span> coffee</h2>
+          <div class="slider">
+            <div class="arrow left">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6 12H18.5M12.5 18L18.5 12L12.5 6"
+                  stroke="#403F3D"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <div class="slide">
+              <div class="card">
+                <div class="card-image">
+                  <img
+                    src="../../assets/img/coffee-slider-1.png"
+                    alt="coffee"
+                  />
+                </div>
+                <div class="card-description">
+                  <p class="coffee-name">S’mores Frappuccino</p>
+                  <p class="coffee-description">
+                    This new drink takes an espresso and mixes it with brown
+                    sugar and cinnamon before being topped with oat milk.
+                  </p>
+                  <p class="coffee-price">$5.50</p>
+                </div>
+              </div>
+            </div>
+            <div class="arrow right">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6 12H18.5M12.5 18L18.5 12L12.5 6"
+                  stroke="#403F3D"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+          </div>
+          <div class="controls">
+            <span class="control active"></span>
+            <span class="control"></span>
+            <span class="control"></span>
+          </div>
+        </section>
+      </div>
+    </main>
   </body>
 </html>
