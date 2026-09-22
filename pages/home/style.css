@@ -322,3 +322,67 @@ h2 {
 .arrow:hover svg path {
   stroke: #e1d4c9;
 }
+
+.about {
+  padding: 0 40px;
+  margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.about-images {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 40px;
+  height: 1060px;
+}
+
+.image {
+  width: 660px;
+  border-radius: 20px;
+  transition: 0.5s;
+}
+
+.image1,
+.image4 {
+  height: 590px;
+}
+
+.image2,
+.image3 {
+  height: 430px;
+}
+
+.image1 {
+  background: no-repeat center/110% url(../../assets/img/about-1.png);
+}
+
+.image1:hover {
+  background: no-repeat center/100% url(../../assets/img/about-1.png);
+}
+
+.image2 {
+  background: no-repeat center/110% url(../../assets/img/about-2.png);
+}
+
+.image2:hover {
+  background: no-repeat center/100% url(../../assets/img/about-2.png);
+}
+
+.image3 {
+  background: no-repeat center/110% url(../../assets/img/about-3.png);
+}
+
+.image3:hover {
+  background: no-repeat center/100% url(../../assets/img/about-3.png);
+}
+
+.image4 {
+  background: no-repeat center/110% url(../../assets/img/about-4.png);
+}
+
+.image4:hover {
+  background: no-repeat center/100% url(../../assets/img/about-4.png);
+}
