@@ -386,3 +386,91 @@ h2 {
 .image4:hover {
   background: no-repeat center/100% url(../../assets/img/about-4.png);
 }
+
+.mobile-app {
+  display: flex;
+  align-items: center;
+  gap: 100px;
+  padding: 0 40px;
+  margin-bottom: 100px;
+}
+
+.mobile-app-offer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+  width: 630px;
+}
+
+.mobile-screens {
+  width: 630px;
+  height: 630px;
+}
+
+.buttons {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.button {
+  display: flex;
+  width: 200px;
+  padding: 12px 20px;
+  align-items: center;
+  gap: 8px;
+  border-radius: 100px;
+  border: 1px solid #665f55;
+  transition: 0.5s;
+}
+
+.button-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.text-top {
+  color: #403f3d;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%;
+  margin: 0;
+}
+
+.text-bottom {
+  color: #403f3d;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+  margin: 0;
+}
+
+.mobile-app-text {
+  color: #403f3d;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  margin: 0;
+}
+
+.button:hover {
+  background: #665f55;
+}
+
+.button:hover p {
+  color: #e1d4c9;
+}
+
+.button:hover svg path {
+  fill: #e1d4c9;
+}
