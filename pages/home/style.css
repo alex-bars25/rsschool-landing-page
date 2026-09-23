@@ -9,6 +9,10 @@ body {
   background: #e1d4c9;
 }
 
+body.dark {
+  background: #292826;
+}
+
 .wrapper {
   margin: 0 auto;
   max-width: 1440px;
@@ -21,6 +25,18 @@ body {
 
 .logo {
   width: 100px;
+}
+
+.logo-dark {
+  display: none;
+}
+
+.logo.dark .logo-dark {
+  display: block;
+}
+
+.logo.dark .logo-light {
+  display: none;
 }
 
 .header-menu {
@@ -60,6 +76,14 @@ body {
   transform: scaleX(1);
 }
 
+.navigation.dark a {
+  color: #e1d4c9
+}
+
+.navigation.dark a:after {
+  border-bottom: solid 2px #e1d4c9
+}
+
 .header-actions {
   display: flex;
   gap: 24px;
@@ -75,28 +99,48 @@ body {
   padding: 4px;
 }
 
-.theme-switch:hover .dark {
+.theme-switch.dark {
+  border: solid 1px #665f55;
+}
+
+.moon:hover {
   background: #665f55;
   transition: 0.5s;
 }
 
-.theme-switch:hover .dark svg path {
+.moon:hover svg path {
   fill: #e1d4c9;
   transition: 0.5s;
 }
 
-.light {
+.moon.disabled {
+  pointer-events: none;
   background: #b0907a;
 }
 
-.light,
-.dark {
+.moon.disabled svg path {
+  fill: #e1d4c9;
+}
+
+.sun:hover {
+  background: #665f55;
+  transition: 0.5s;
+}
+
+.sun.disabled {
+  pointer-events: none;
+  background: #b0907a;
+}
+
+.sun,
+.moon {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 36px;
   width: 36px;
   border-radius: 100%;
+  transition: 0.5s;
 }
 
 .menu a {
@@ -124,6 +168,26 @@ body {
 
 .menu a:hover:after {
   transform: scaleX(1);
+}
+
+.menu.dark a {
+  color: #e1d4c9;
+}
+
+.menu.dark a:after {
+  border-bottom: solid 2px #e1d4c9;
+}
+
+.cup-dark {
+  display: none;
+}
+
+.menu.dark .cup-dark, .menu-button.dark .cup-dark {
+  display: inline-block;
+}
+
+.menu.dark .cup-light, .menu-button.dark .cup-light {
+  display: none;
 }
 
 .menu-button {
@@ -161,6 +225,11 @@ body {
 
 .menu-button:hover span {
   transform: translateX(0);
+}
+
+.menu-button.dark {
+  background: #292826;
+  color: #e1d4c9;
 }
 
 .burger {
@@ -227,6 +296,10 @@ h2 {
   margin: 0;
 }
 
+h2.dark {
+  color: #e1d4c9;
+}
+
 .slider {
   display: flex;
   align-items: center;
@@ -263,6 +336,10 @@ h2 {
   text-align: center;
   font-family: "Inter", sans-serif;
   font-style: normal;
+}
+
+.card-description.dark {
+  color: #e1d4c9;
 }
 
 .coffee-name {
@@ -302,6 +379,14 @@ h2 {
   background: #665f55;
 }
 
+.control.dark {
+  background: #665f55;
+}
+
+.control.dark.active {
+  background: #c1b6ad;
+}
+
 .arrow {
   display: flex;
   width: 60px;
@@ -324,6 +409,22 @@ h2 {
 
 .arrow:hover svg path {
   stroke: #e1d4c9;
+}
+
+.arrow.dark {
+  border: 1px solid #c1b6ad;
+}
+
+.arrow.dark:hover {
+  background: #c1b6ad;
+}
+
+.arrow.dark svg path {
+  stroke: #e1d4c9;
+}
+
+.arrow.dark:hover svg path {
+  stroke: #292826;
 }
 
 .about {
@@ -409,15 +510,23 @@ h2 {
   transition: 0.5s;
 }
 
+.button.dark {
+  border: 1px solid #c1b6ad;
+}
+
 .button-text {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 2px;
+  color: #403f3d;
+}
+
+.button-text.dark {
+  color: #e1d4c9;
 }
 
 .text-top {
-  color: #403f3d;
   text-align: center;
   font-family: "Inter", sans-serif;
   font-size: 10px;
@@ -428,7 +537,6 @@ h2 {
 }
 
 .text-bottom {
-  color: #403f3d;
   font-family: "Inter", sans-serif;
   font-size: 16px;
   font-style: normal;
@@ -447,6 +555,10 @@ h2 {
   margin: 0;
 }
 
+.mobile-app-text.dark {
+  color: #e1d4c9;
+}
+
 .button:hover {
   background: #665f55;
 }
@@ -459,6 +571,22 @@ h2 {
   fill: #e1d4c9;
 }
 
+.button.dark svg path {
+  fill: #e1d4c9;
+} 
+
+.button.dark:hover {
+  background: #c1b6ad;
+}
+
+.button.dark:hover p {
+  color: #292826;
+}
+
+.button.dark:hover svg path {
+  fill: #292826;
+}
+
 .footer-container {
   display: flex;
   max-width: 1360px;
@@ -469,6 +597,10 @@ h2 {
   gap: 100px;
   border-radius: 40px;
   background: #665f55;
+}
+
+.footer-container.dark {
+  background: #403f3d;
 }
 
 .footer-offer,
@@ -600,6 +732,14 @@ h2 {
     height: 0;
   }
   
+  .burger.dark {
+    border: 1px solid #c1b6ad;
+  }
+
+  .burger.dark span {
+    border: 1.5px solid #e1d4c9;
+  }
+
   .open .line1 {
     transform: rotate(45deg) translateY(3px) translateX(3px);
   }
