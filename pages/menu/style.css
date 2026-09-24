@@ -331,6 +331,15 @@ h2 {
   margin: 0 40px 100px;
 }
 
+.cards-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
 .card {
   display: flex;
   height: 506px;
@@ -624,10 +633,6 @@ h2 {
 
   .footer-offer h2 {
     text-align: start;
-  }
-
-  .hover {
-    pointer-events: none;
   }
 }
 

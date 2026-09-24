@@ -813,10 +813,6 @@ h2.dark {
   .footer-offer h2 {
     text-align: start;
   }
-
-  .hover {
-    pointer-events: none;
-  }
 }
 
 @media (max-width: 700px) {
