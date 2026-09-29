@@ -74,6 +74,7 @@ document.addEventListener('click', (e) => {
 document.addEventListener('keydown', (e) => {
   if (e.key == 'Escape') {
     hideMenu();
+    closeModal();
   }
 });
 
@@ -153,9 +154,162 @@ load.addEventListener('click', () => {
 });
 
 window.addEventListener("resize", () => {
-  screenWidth = window.innerWidth;
-  drawCards(tabIndex, screenWidth);
-  if (screenWidth > 768) {
-    hideMenu();
+  if (window.innerWidth != screenWidth) {
+    screenWidth = window.innerWidth;
+    drawCards(tabIndex, screenWidth);
+    if (screenWidth > 768) {
+      hideMenu();
+    }
   }
 });
+
+// modal
+const overlay = document.querySelector('.overlay');
+const main = document.querySelector('.main');
+let currentModal;
+let sizes;
+let startPrice;
+let price;
+let sizePrice = 0;
+let additivePrice = 0;
+let currentPrice = 0;
+
+function createModal(id) {
+  let modal = document.createElement('div');
+  modal.innerHTML = '';
+  let product = products.find(item => item.id == id);
+  modal.className = `modal-window ${themeName}`;
+  modal.classList.add('show', 'fade-in');
+  modal.innerHTML = `
+  <div class="modal-img">
+    <img src=${product.pathToImg} alt=${product.category}>
+  </div>
+  <div class="modal-content ${themeName}">
+    <div class="modal-heading">
+      <div class="modal-title">${product.name}</div>
+      <div class="modal-description">${product.description}</div>
+    </div>
+    <div class="modal-select sizes">
+      <span class="select-text">Size</span>
+      <div class="modal-tabs">
+        <div id="1" class="modal-tab-item ${themeName} size active">
+          <span class="icon">S</span>
+          <span class="tab-text">${product.sizes.s.size}</span>  
+        </div>
+        <div id="2" class="modal-tab-item ${themeName} size">
+          <span class="icon">M</span>
+          <span class="tab-text">${product.sizes.m.size}</span>  
+        </div>
+        <div id="3" class="modal-tab-item ${themeName} size">
+          <span class="icon">L</span>
+          <span class="tab-text">${product.sizes.l.size}</span>  
+        </div>
+      </div>
+    </div>
+    <div class="modal-select additives">
+      <span class="select-text">Additives</span>
+      <div class="modal-tabs">
+        <div class="modal-tab-item ${themeName} additive">
+          <span class="icon">1</span>
+          <span class="tab-text">${product.additives[0].name}</span>  
+        </div>
+        <div class="modal-tab-item ${themeName} additive">
+          <span class="icon">2</span>
+          <span class="tab-text">${product.additives[1].name}</span>  
+        </div>
+        <div class="modal-tab-item ${themeName} additive">
+          <span class="icon">3</span>
+          <span class="tab-text">${product.additives[2].name}</span>  
+        </div>
+      </div>
+    </div>
+    <div class="total">
+      <span>Total:</span>
+      <span class="modal-price">$${product.price}</span>
+    </div>
+    <div class="alert ${themeName}">
+      <img src="../../assets/icons/info-empty.svg" alt="info" width="16" height="16 class="info-light">
+      <img src="../../assets/icons/info-empty-dark.svg" alt="info" width="16" height="16" class="info-dark">
+      <div class="alert-text">
+        The cost is not final. Download our mobile app to see the final price and place your order. Earn loyalty points and enjoy your favorite coffee with up to 20% discount.
+      </div>
+    </div>
+    <div class="close-button ${themeName}">Close</div>
+  `;
+  main.appendChild(modal);
+  currentModal = modal;
+  sizes = document.querySelectorAll('.size');
+  startPrice = Number(product.price);
+  price = document.querySelector('.modal-price');
+}
+
+function openModal() {
+  overlay.classList.add('show', 'fade-in');
+  currentModal.classList.add('show', 'fade-in');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  overlay.classList.remove('show', 'fade-in');
+  currentModal.classList.remove('show', 'fade-in');
+  document.body.style.overflow = 'auto';
+  sizes.forEach(item => item.remove());
+  currentModal.remove();
+}
+
+document.addEventListener('click', (e) => {
+  let card = e.target.closest('.card');
+  let close = e.target.closest('.close-button');
+  let size = e.target.closest('.size');
+  let additive = e.target.closest('.additive');
+  if (card) {
+    sizePrice = 0;
+    additivePrice = 0;
+    createModal(card.id);
+    openModal();
+  }
+  if (e.target === overlay) {
+    closeModal();
+  }
+  if (close) {
+    closeModal();
+  }
+  if (size) {
+    sizes.forEach(item => item.classList.remove('active'));
+    size.classList.add('active');
+    switch (size.id) {
+      case '2':
+        sizePrice = 0.50;
+        break;
+      case '3':
+        sizePrice = 1.00;
+        break;
+      default:
+        sizePrice = 0;
+        break;
+    }
+  }
+  if (additive) {
+    additive.classList.toggle('active');
+    let count = document.querySelector('.additives').querySelectorAll('.active').length;
+    switch (count) {
+      case 1:
+        additivePrice = 0.50;
+        break;
+      case 2:
+        additivePrice = 1.00;
+        break;
+      case 3:
+        additivePrice = 1.50;
+        break;
+      default:
+        additivePrice = 0;
+        break;
+    }
+  }
+  currentPrice = startPrice + sizePrice + additivePrice;
+  if (price) {
+    price.innerHTML = `$${currentPrice.toFixed(2)}`;
+  }
+});
+
