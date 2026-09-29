@@ -32,8 +32,52 @@ moon.addEventListener('click', () => {
   changeTheme('dark');
 });
 
-//create product cards
+// burger
+const burger = document.querySelector('.burger');
+const navigation = document.querySelector('.navigation');
+const menu = document.querySelector('.menu');
+const navLink = document.querySelectorAll('.nav a');
 
+const showMenu = () => {
+  burger.classList.add('open');
+  menu.classList.add('open');
+  menu.classList.remove('hidden');
+  navigation.classList.add('open');
+  navigation.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+}
+
+const hideMenu = () => {
+  burger.classList.remove('open');
+  menu.classList.remove('open');
+  menu.classList.add('hidden');
+  navigation.classList.remove('open');
+  navigation.classList.add('hidden');
+  document.body.style.overflow = 'auto';
+}
+
+burger.addEventListener('click', () => {
+  if (burger.classList.contains('open')) {
+    hideMenu();
+  } else {
+    showMenu();
+  } 
+});
+
+document.addEventListener('click', (e) => {
+  let target = e.target;
+  if (target == navLink[0] || target == navLink[1] || target == navLink[2] || target == navLink[3] || target == navLink[4]) {
+    hideMenu();
+  }
+});
+
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 768) {
+    hideMenu();
+  }
+});
+
+//create product cards
 function createCard(product) {
   let card = document.createElement('div');
   card.id = product.id;
