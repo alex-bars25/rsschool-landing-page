@@ -301,22 +301,28 @@ h2.dark {
 
 .slide {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin: 0 auto;
+  max-width: 480px;
+  max-height: 640px;
+  overflow: hidden;
 }
 
 .card {
-  display: flex;
   max-width: 480px;
+  display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  transition: 0.5s;
 }
 
 .card-image {
   width: 480px;
   height: 480px;
-  background: no-repeat center/100% url(../../assets/img/coffee-slider-1.png);
+}
+
+.card-image img {
+  max-width: 100%;
 }
 
 .card-description {
@@ -328,6 +334,7 @@ h2.dark {
   font-family: "Inter", sans-serif;
   font-style: normal;
 }
+
 
 .card-description.dark {
   color: #E1D4C9;
@@ -358,24 +365,33 @@ h2.dark {
 }
 
 .control {
-  display: inline-block;
+  display: block;
+  overflow: hidden;
   width: 40px;
   height: 4px;
   border-radius: 100px;
   background: #C1B6AD;
-  content: "";
 }
 
-.active {
+.progress {
+  display: block;
+  width: 0;
+  height: 100%;
   background: #665F55;
+  animation: timer 5s;
 }
 
-.control.dark {
-  background: #665F55;
-}
-
-.control.dark.active {
+.progrss.dark {
   background: #C1B6AD;
+}
+
+@keyframes timer {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
 }
 
 .arrow {
@@ -770,6 +786,14 @@ h2.dark {
     text-align: center;
   }
 
+  .slide {
+    max-width: calc(100vw - 200px);
+  }  
+
+  .card {
+    min-width: calc(100vw - 200px);
+  }
+
   .about h2 {
     text-align: start;
   }
@@ -861,9 +885,13 @@ h2.dark {
     display: none;
   }
 
+  .slide {
+    max-width: calc(100vw - 32px);
+  }  
+
   .card {
-    width: 100%;
-  }
+    min-width: calc(100vw - 32px);
+  }  
 
   .about {
     margin: 0 16px 100px;

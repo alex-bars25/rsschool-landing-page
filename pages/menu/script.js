@@ -71,6 +71,12 @@ document.addEventListener('click', (e) => {
   }
 });
 
+document.addEventListener('keydown', (e) => {
+  if (e.key == 'Escape') {
+    hideMenu();
+  }
+});
+
 window.addEventListener("resize", () => {
   if (window.innerWidth > 768) {
     hideMenu();

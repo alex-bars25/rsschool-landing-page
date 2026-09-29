@@ -69,8 +69,103 @@ document.addEventListener('click', (e) => {
   }
 });
 
+document.addEventListener('keydown', (e) => {
+  if (e.key == 'Escape') {
+    hideMenu();
+  }
+});
+
 window.addEventListener("resize", () => {
   if (window.innerWidth > 768) {
     hideMenu();
   }
+});
+
+// slider
+const slide = document.querySelector('.slide');
+const controls = document.querySelectorAll('.control');
+const progress = document.createElement('span');
+progress.className = 'progress dark';
+const card = document.querySelector('.card_1');
+const prevSlide = document.querySelector('.left');
+const nextSlide = document.querySelector('.right');
+let autoplay = true;
+let index = 0;
+
+prevSlide.addEventListener('click', () => prev());
+nextSlide.addEventListener('click', () => next());
+progress.addEventListener('animationend', () => next());
+
+function move(index) {
+  if (index == 0) {
+    card.style.marginLeft = '0';
+  }
+  if (index == 1) {
+    card.style.marginLeft = '-100%';
+  }
+  if (index == 2) {
+    card.style.marginLeft = '-200%';
+  }
+  controls[index].appendChild(progress);
+}
+
+function next() {
+  if (index == 2) {
+    index = 0;
+  } else {
+    index++;
+  }
+  move(index);
+}
+
+function prev() {
+  if (index == 0) {
+    index = 2;
+  } else {
+    index--;
+  }
+  move(index);
+}
+
+move(index);
+
+slide.addEventListener('mouseenter', () => progress.style.animationPlayState = 'paused');
+slide.addEventListener('touchstart', () => progress.style.animationPlayState = 'paused');
+slide.addEventListener('mouseleave', () => progress.style.animationPlayState = 'running');
+slide.addEventListener('touchend', () => progress.style.animationPlayState = 'running');
+
+// swipe
+let touchX = 0;
+let startX = 0;
+let swipeLeft = false;
+let swipeRight = false;
+
+function getX(e) {
+  touchX = e.touches[0].pageX;
+}
+
+slide.addEventListener('touchstart', (e) => {
+  getX(e);
+  startX = touchX;
+});
+
+slide.addEventListener('touchmove', (e) => {
+  getX(e);
+  let diffX = touchX - startX;
+  if (diffX > 0) {
+    swipeLeft = true;
+  } else {
+    swipeRight = true;
+  };
+});
+
+slide.addEventListener('touchend', () => {
+  if (swipeLeft) {
+    prev();
+  }
+  if (swipeRight) {
+    next();
+  }
+  swipeLeft = false;
+  swipeRight = false;
 });
