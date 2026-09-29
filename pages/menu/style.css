@@ -517,6 +517,7 @@ h2 {
     z-index: 2;
     background: #E1D4C9;
     gap: 60px;
+    display: none;
   }
 
   .navigation.dark {
@@ -552,6 +553,7 @@ h2 {
     position: absolute;
     top: 560px;
     z-index: 2;
+    display: none;
   }
 
   .menu a {
