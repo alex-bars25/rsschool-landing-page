@@ -77,17 +77,25 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-window.addEventListener("resize", () => {
-  if (window.innerWidth > 768) {
-    hideMenu();
-  }
-});
-
 //create product cards
+let screenWidth = window.innerWidth;
+const tabs = document.querySelectorAll('.tab-item');
+let tabIndex = 0;
+const load = document.querySelector('.load');
+
+tabs.forEach((item, index) => item.addEventListener('click', () => {
+  tabs.forEach(item => item.classList.remove('active'));
+  item.classList.add('active');
+  tabIndex = index;
+  drawCards(tabIndex, screenWidth);
+}));
+
+const cards = document.querySelector('.cards-container');
+
 function createCard(product) {
   let card = document.createElement('div');
+  card.className  = `card ${themeName}`;
   card.id = product.id;
-  card.className = `card ${themeName}`
   card.innerHTML = `
   <div class="card-image">
     <img src=${product.pathToImg} alt=${product.category}>
@@ -103,9 +111,7 @@ function createCard(product) {
   return card;
 }
 
-const cards = document.querySelector('.cards-container');
-
-function drawCards(tabIndex) {
+function drawCards(tabIndex, screenWidth) {
   cards.innerHTML = '';
   if (tabIndex == 0) {
     products
@@ -122,15 +128,34 @@ function drawCards(tabIndex) {
       .filter(item => item.category == 'dessert')
       .forEach(item => cards.appendChild(createCard(item)));
   }
-
+  if (cards.childElementCount > 4 && screenWidth <= 768) {
+    cards.childNodes.forEach((item, index) => {
+      if (index > 3) {
+        item.classList.add('hidden');
+      }
+    });
+    load.classList.remove('hidden');
+  } else {
+    cards.childNodes.forEach((item) => {
+      item.classList.remove('hidden');
+    });
+    load.classList.add('hidden');  
+  }
 }
 
-drawCards(0);
+drawCards(tabIndex, screenWidth);
 
-const tabs = document.querySelectorAll('.tab-item');
+load.addEventListener('click', () => {
+  cards.childNodes.forEach((item) => {
+    item.classList.remove('hidden');
+  });
+  load.classList.add('hidden');
+});
 
-tabs.forEach((item, index) => item.addEventListener('click', () => {
-  tabs.forEach(item => item.classList.remove('active'));
-  item.classList.add('active');
-  drawCards(index);
-}));
+window.addEventListener("resize", () => {
+  screenWidth = window.innerWidth;
+  drawCards(tabIndex, screenWidth);
+  if (screenWidth > 768) {
+    hideMenu();
+  }
+});
